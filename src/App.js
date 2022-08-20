@@ -11,10 +11,16 @@ import TaskData from "./Data/TaskData";
 
 function App() {
   const [task, setTask] = useState(TaskData);
+  const [deletedTask, setDeletedTask] = useState([]);
+  let deletedItem;
 
   const deleteTask = (id) => {
     console.log(id, "-->delete");
     if (window.confirm("are you sure you want to delete?")) {
+      deletedItem = task.filter((item) => item.id === id);
+      // console.log(deletedItem);
+      setDeletedTask([deletedItem, ...deletedTask]);
+      // console.log(deletedTask);
       setTask(task.filter((item) => item.id !== id)); //doing the delete items = match hole rekhe deo na hole baad diye deo
     }
   };
@@ -55,7 +61,7 @@ function App() {
               content={
                 <>
                   <BackIcon />
-                  <DeletedTask />
+                  <DeletedTask deletedTask={deletedTask} />
                 </>
               }
             />
