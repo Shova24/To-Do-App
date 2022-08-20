@@ -1,7 +1,6 @@
 import React from "react";
 import { Breadcrumb } from "antd";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import HomePage from "../HomePage/HomePage";
+import { Link } from "react-router-dom";
 
 export default function BreadCrumbComp() {
   return (
@@ -11,9 +10,11 @@ export default function BreadCrumbComp() {
           <Link to={"/"}>Home</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to={"/add task"}>Add Task</Link>
+          <Link to={"/add-task"}>Add Task</Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>Deleted Task</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <Link to={"/deleted-task"}>Deleted Task</Link>
+        </Breadcrumb.Item>
       </Breadcrumb>
     </>
   );
