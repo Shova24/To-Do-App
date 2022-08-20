@@ -8,7 +8,7 @@ export const HeaderStyle = {
 //Content
 export const contentStyle = {
   padding: "0 50px",
-  height: "90%",
+  height: "100%",
 };
 
 //Card

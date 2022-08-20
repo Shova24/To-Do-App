@@ -13,6 +13,9 @@ export default function BreadCrumbComp() {
           <Link to={"/add-task"}>Add Task</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
+          <Link to={"/task-list"}>Task List</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
           <Link to={"/deleted-task"}>Deleted Task</Link>
         </Breadcrumb.Item>
       </Breadcrumb>

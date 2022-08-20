@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderComponent from "../Shared/HeaderComponent";
 import { Layout, Space } from "antd";
 import { contentStyle } from "../../Style";
 
@@ -25,3 +26,7 @@ export default function Base({ header, content }) {
     </>
   );
 }
+
+Base.defaultProps = {
+  header: <HeaderComponent />,
+};
