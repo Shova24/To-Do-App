@@ -1,13 +1,12 @@
 import React from "react";
 import TaskItem from "./TaskItem";
 
-export default function TaskList() {
+export default function TaskList({ task, handleDelete }) {
   return (
     <>
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
+      {task.map((task) => (
+        <TaskItem key={task.id} task={task} handleDelete={handleDelete} />
+      ))}
     </>
   );
 }
