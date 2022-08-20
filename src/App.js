@@ -18,11 +18,18 @@ function App() {
     console.log(id, "-->delete");
     if (window.confirm("are you sure you want to delete?")) {
       deletedItem = task.filter((item) => item.id === id);
-      // console.log(deletedItem);
+
       setDeletedTask([deletedItem, ...deletedTask]);
-      // console.log(deletedTask);
-      setTask(task.filter((item) => item.id !== id)); //doing the delete items = match hole rekhe deo na hole baad diye deo
+
+      setTask(task.filter((item) => item.id !== id));
     }
+  };
+
+  const deleteParmanent = (id) => {
+    if (window.confirm("are you sure you want to delete Permanently?")) {
+      setDeletedTask(deletedTask.filter((item) => item.id === id));
+    }
+    console.log(id);
   };
   return (
     <>
@@ -61,7 +68,10 @@ function App() {
               content={
                 <>
                   <BackIcon />
-                  <DeletedTask deletedTask={deletedTask} />
+                  <DeletedTask
+                    deletedTask={deletedTask}
+                    handleDelete={deleteParmanent}
+                  />
                 </>
               }
             />
