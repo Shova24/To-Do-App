@@ -1,6 +1,6 @@
 import React from "react";
 import Base from "../Shared/Base";
-import BreadCrumbComp from "../Shared/BreadCrumb";
+import BreadCrumbComp from "../Shared/BreadCrumbComp";
 import ProfileCard from "./ProfileComp";
 
 export default function HomePage() {

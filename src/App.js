@@ -1,36 +1,44 @@
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import HomePage from "./Components/HomePage/HomePage";
-import AddTask from "./Components/Tasks/AddTask";
 import DeletedTask from "./Components/Tasks/DeletedTask";
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
 import Base from "./Components/Shared/Base";
-import BackIcon from "./Components/Shared/BackIcon";
 import TaskList from "./Components/Tasks/TaskList";
 import TaskData from "./Data/TaskData";
+import BreadCrumbComp from "./Components/Shared/BreadCrumbComp";
+import AddNewTask from "./Components/Tasks/AddNewTask";
 
 function App() {
   const [task, setTask] = useState(TaskData);
+  // Adding Task
+  const addTask = (newTask) => {
+    setTask([...task, newTask]);
+  };
+
   const [deletedTask, setDeletedTask] = useState([]);
-  let deletedItem;
 
   const deleteTask = (id) => {
-    console.log(id, "-->delete");
     if (window.confirm("are you sure you want to delete?")) {
-      deletedItem = task.filter((item) => item.id === id);
+      setTask(task.filter((el) => el.id !== id));
 
-      setDeletedTask([deletedItem, ...deletedTask]);
-
-      setTask(task.filter((item) => item.id !== id));
+      const deletedItem = task.find((el) => el.id === id);
+      setDeletedTask([...deletedTask, deletedItem]);
     }
   };
 
   const deleteParmanent = (id) => {
     if (window.confirm("are you sure you want to delete Permanently?")) {
-      setDeletedTask(deletedTask.filter((item) => item.id === id));
+      console.log(
+        id,
+        deletedTask.filter((item) => console.log(item))
+      );
+      console.log(deletedTask);
+      setDeletedTask(deletedTask.filter((item) => item.id !== id));
     }
-    console.log(id);
   };
+
   return (
     <>
       <Routes>
@@ -41,8 +49,8 @@ function App() {
             <Base
               content={
                 <>
-                  <BackIcon />
-                  <AddTask />
+                  <BreadCrumbComp />
+                  <AddNewTask handleAdd={addTask} />
                 </>
               }
             />
@@ -54,7 +62,7 @@ function App() {
             <Base
               content={
                 <>
-                  <BackIcon />
+                  <BreadCrumbComp />
                   <TaskList task={task} handleDelete={deleteTask} />
                 </>
               }
@@ -67,11 +75,8 @@ function App() {
             <Base
               content={
                 <>
-                  <BackIcon />
-                  <DeletedTask
-                    deletedTask={deletedTask}
-                    handleDelete={deleteParmanent}
-                  />
+                  <BreadCrumbComp />
+                  <DeletedTask deletedTask={deletedTask} handleDelete={deleteParmanent} />
                 </>
               }
             />

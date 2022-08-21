@@ -8,18 +8,8 @@ const { Meta } = Card;
 export default function ProfileCard() {
   return (
     <>
-      <CardComp
-        title="User Profile"
-        actions={[
-          <SettingOutlined key="setting" />,
-          <EditOutlined key="edit" />,
-        ]}
-      >
-        <Meta
-          avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-          title="Card title"
-          description="This is the description"
-        />
+      <CardComp title="User Profile" actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />]}>
+        <Meta avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />} title="Card title" description="This is the description" />
       </CardComp>
     </>
   );
