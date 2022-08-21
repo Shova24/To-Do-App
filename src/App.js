@@ -1,14 +1,19 @@
-import { v4 as uuidv4 } from "uuid";
+// 3rd party libraries
+// internal libraries
+// css/ less
+
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import HomePage from "./Components/HomePage/HomePage";
 import DeletedTask from "./Components/Tasks/DeletedTask";
-import "./index.css";
-import { Routes, Route } from "react-router-dom";
 import Base from "./Components/Shared/Base";
 import TaskList from "./Components/Tasks/TaskList";
 import TaskData from "./Data/TaskData";
 import BreadCrumbComp from "./Components/Shared/BreadCrumbComp";
 import AddNewTask from "./Components/Tasks/AddNewTask";
+
+import "./index.css";
 
 function App() {
   const [task, setTask] = useState(TaskData);

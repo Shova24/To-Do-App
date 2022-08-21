@@ -12,12 +12,13 @@ export default function AddNewTask({ handleAdd }) {
       task: values.task,
     };
     handleAdd(newTask);
+    form.resetFields();
     console.log(newTask);
   };
   return (
     <>
       <CardComp>
-        <Form onFinish={onFinish}>
+        <Form onFinish={onFinish} form={form}>
           <Form.Item
             name="task"
             label="Add New Task"
