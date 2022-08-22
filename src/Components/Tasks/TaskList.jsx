@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 import { useContext } from "react";
 import TaskContext from "../Context/TaskContext";
 
-export default function TaskList({ handleDelete }) {
+export default function TaskList() {
   const { task } = useContext(TaskContext);
 
   if (task.length === 0) {
@@ -15,7 +15,7 @@ export default function TaskList({ handleDelete }) {
       <>
         {task.map((task) => (
           // console.log(task)
-          <TaskItem key={task.id} task={task} handleDelete={handleDelete} />
+          <TaskItem key={task.id} task={task} />
         ))}
       </>
     );
