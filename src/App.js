@@ -68,7 +68,7 @@ function App() {
               content={
                 <>
                   <BreadCrumbComp />
-                  <TaskList task={task} handleDelete={deleteTask} />
+                  <TaskList handleDelete={deleteTask} />
                 </>
               }
             />
