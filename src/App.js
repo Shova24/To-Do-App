@@ -55,7 +55,7 @@ function App() {
               content={
                 <>
                   <BreadCrumbComp />
-                  <AddNewTask handleAdd={addTask} />
+                  <AddNewTask />
                 </>
               }
             />
@@ -68,7 +68,7 @@ function App() {
               content={
                 <>
                   <BreadCrumbComp />
-                  <TaskList handleDelete={deleteTask} />
+                  <TaskList />
                 </>
               }
             />
@@ -81,7 +81,7 @@ function App() {
               content={
                 <>
                   <BreadCrumbComp />
-                  <DeletedTask deletedTask={deletedTask} handleDelete={deleteParmanent} />
+                  <DeletedTask  />
                 </>
               }
             />

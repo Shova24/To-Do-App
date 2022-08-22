@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button, Input } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import CardComp from "../Shared/CardComp";
+import TaskContext from "../Context/TaskContext";
 
-export default function AddNewTask({ handleAdd }) {
+export default function AddNewTask() 
+
+{
+  const {addTask} = useContext(TaskContext)
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -11,7 +15,7 @@ export default function AddNewTask({ handleAdd }) {
       id: uuidv4(),
       task: values.task,
     };
-    handleAdd(newTask);
+    addTask(newTask);
     form.resetFields();
     console.log(newTask);
   };
