@@ -3,6 +3,7 @@ import { Form, Button, Input } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import CardComp from "../Shared/CardComp";
 import TaskContext from "../Context/TaskContext";
+import Notification from "../Shared/Notification";
 
 export default function AddNewTask() {
   const { addTask } = useContext(TaskContext);
@@ -15,6 +16,7 @@ export default function AddNewTask() {
     };
     addTask(newTask);
     form.resetFields();
+    Notification("Added Task");
   };
   return (
     <>

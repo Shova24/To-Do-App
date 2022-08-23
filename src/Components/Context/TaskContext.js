@@ -18,15 +18,6 @@ export const TaskProvider = ({ children }) => {
   const [imageProfile, setImageProfile] = useState("https://joeschmoe.io/api/v1/random");
   const [edit, setEdit] = useState(false);
 
-  //Notification Section states
-  const [notificationTitle, setNotificationTitle] = useState("Default Notification Title");
-
-  //notification Functions
-  const sendNotification = (title) => {
-    console.log("notification is sent");
-    setNotificationTitle(title);
-  };
-
   //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
@@ -74,7 +65,7 @@ export const TaskProvider = ({ children }) => {
         edit,
         imageProfile,
         editTask,
-        notificationTitle,
+
         editTaskItem,
         setEdit,
         deleteTask,
@@ -82,7 +73,6 @@ export const TaskProvider = ({ children }) => {
         deleteParmanent,
         profileEdit,
         updateProfile,
-        sendNotification,
       }}>
       {children}
     </TaskContext.Provider>
