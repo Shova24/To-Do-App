@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import ModalComponent from "../Shared/ModalComponent";
+import Notification from "../Shared/Notification";
 const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
@@ -24,7 +26,8 @@ export const TaskProvider = ({ children }) => {
   };
   const editTaskItem = () => {
     setEditTask(true);
-    console.log("Edit Task Item");
+    <ModalComponent />;
+    console.log("Edit Task Item : ", editTask);
   };
   const deleteTask = (id) => {
     if (window.confirm("are you sure you want to delete?")) {
@@ -32,6 +35,7 @@ export const TaskProvider = ({ children }) => {
 
       const deletedItem = task.find((el) => el.id === id);
       setDeletedTask([...deletedTask, deletedItem]);
+      Notification("Task Deleted");
     }
   };
   const deleteParmanent = (id) => {
@@ -40,8 +44,8 @@ export const TaskProvider = ({ children }) => {
         id,
         deletedTask.filter((item) => console.log(item))
       );
-      console.log(deletedTask);
       setDeletedTask(deletedTask.filter((item) => item.id !== id));
+      Notification("Task Permanently Deleted");
     }
   };
 
@@ -66,6 +70,7 @@ export const TaskProvider = ({ children }) => {
         imageProfile,
         editTask,
 
+        setEditTask,
         editTaskItem,
         setEdit,
         deleteTask,

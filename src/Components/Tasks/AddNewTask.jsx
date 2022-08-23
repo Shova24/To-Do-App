@@ -1,13 +1,15 @@
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import { Form, Button, Input } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import CardComp from "../Shared/CardComp";
 import TaskContext from "../Context/TaskContext";
 import Notification from "../Shared/Notification";
+import { useNavigate } from "react-router-dom";
 
 export default function AddNewTask() {
   const { addTask } = useContext(TaskContext);
   const [form] = Form.useForm();
+  const navigate = useNavigate()
 
   const onFinish = (values) => {
     const newTask = {
@@ -17,7 +19,9 @@ export default function AddNewTask() {
     addTask(newTask);
     form.resetFields();
     Notification("Added Task");
+    navigate('/task-list')
   };
+
   return (
     <>
       <CardComp>
@@ -34,8 +38,9 @@ export default function AddNewTask() {
             <Input.TextArea showCount maxLength={100} />
           </Form.Item>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button type="primary" htmlType="submit">
-              Add
+            <Button type="primary" htmlType="submit" 
+           >
+              add
             </Button>
           </div>
         </Form>

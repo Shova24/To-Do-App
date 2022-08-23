@@ -4,6 +4,7 @@ import TaskItem from "./TaskItem";
 import UpdateNewTask from "./UpdateNewTask";
 import { useContext } from "react";
 import TaskContext from "../Context/TaskContext";
+import ModalComponent from "../Shared/ModalComponent";
 
 export default function TaskList() {
   const { task, editTask } = useContext(TaskContext);
@@ -13,7 +14,7 @@ export default function TaskList() {
   } else {
     return (
       <>
-        {editTask && <UpdateNewTask />}
+        {editTask && <ModalComponent setVisibility={true}/>}
         {task.map((task) => (
           // console.log(task)
           <TaskItem key={task.id} task={task} />
