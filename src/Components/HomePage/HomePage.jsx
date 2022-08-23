@@ -11,6 +11,7 @@ export default function HomePage() {
           <>
             <ProfileCard />
             <BreadCrumbComp />
+         
             {/* I wanna Add slider and percentage  */}
           </>
         }

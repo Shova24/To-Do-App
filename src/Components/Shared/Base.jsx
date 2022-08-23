@@ -17,8 +17,7 @@ export default function Base({ header, content }) {
             size="middle"
             style={{
               display: "flex",
-            }}
-          >
+            }}>
             {content}
           </Space>
         </Content>

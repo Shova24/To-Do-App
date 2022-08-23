@@ -9,10 +9,10 @@ import { Typography } from "antd";
 const { Text } = Typography;
 
 export default function TaskItem({ task }) {
-  const { deleteTask } = useContext(TaskContext);
+  const { deleteTask,editTaskItem } = useContext(TaskContext);
   return (
     <>
-      <CardComp title="User Profile" actions={[<EditOutlined key="edit" />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
+      <CardComp title="User Profile" actions={[<EditOutlined key="edit" onClick={editTaskItem} />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
         <Text>{task.task}</Text>
       </CardComp>
     </>
