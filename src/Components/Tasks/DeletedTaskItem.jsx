@@ -12,7 +12,8 @@ export default function DeletedTaskItem({ deletedTask }) {
   const { deleteParmanent } = useContext(TaskContext);
   return (
     <>
-      <CardComp title="User Profile" actions={[<EditOutlined key="edit" />, <CloseOutlined key="delete" onClick={() => deleteParmanent(deletedTask.id)} />]}>
+      <CardComp title="User Profile" actions={[
+      <></>, <CloseOutlined key="delete" onClick={() => deleteParmanent(deletedTask.id)} />]}>
         <Text>{deletedTask.task}</Text>
       </CardComp>
     </>

@@ -9,9 +9,9 @@ export default function HomePage() {
       <Base
         content={
           <>
-            <ProfileCard />
             <BreadCrumbComp />
-         
+            <ProfileCard />
+
             {/* I wanna Add slider and percentage  */}
           </>
         }

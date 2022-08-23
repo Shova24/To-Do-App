@@ -5,7 +5,7 @@ import CardComp from "../Shared/CardComp";
 import TaskContext from "../Context/TaskContext";
 
 export default function UpdateNewTask() {
-  const { setEditTask, editTaskItem } = useContext(TaskContext);
+  const { editTaskItem } = useContext(TaskContext);
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -28,7 +28,7 @@ export default function UpdateNewTask() {
             <Input.TextArea showCount maxLength={100} />
           </Form.Item>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button type="primary" htmlType="submit"onClick = {setEditTask} >
+            <Button type="primary" htmlType="submit" onClick={editTaskItem}>
               Add
             </Button>
           </div>

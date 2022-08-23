@@ -1,18 +1,39 @@
 import { createContext, useState } from "react";
-
 const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
+  //Task Section States
   const [task, setTask] = useState([
     {
       id: 1,
       task: "Adding Item to the Task List.",
     },
   ]);
-
   const [deletedTask, setDeletedTask] = useState([]);
+  const [editTask, setEditTask] = useState(false);
+
+  //Profile Section States
+  const [title, setTitle] = useState("Default Title");
+  const [description, setDescription] = useState("Default Description");
+  const [imageProfile, setImageProfile] = useState("https://joeschmoe.io/api/v1/random");
+  const [edit, setEdit] = useState(false);
+
+  //Notification Section states
+  const [notificationTitle, setNotificationTitle] = useState("Default Notification Title");
+
+  //notification Functions
+  const sendNotification = (title) => {
+    console.log("notification is sent");
+    setNotificationTitle(title);
+  };
+
+  //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
+  };
+  const editTaskItem = () => {
+    setEditTask(true);
+    console.log("Edit Task Item");
   };
   const deleteTask = (id) => {
     if (window.confirm("are you sure you want to delete?")) {
@@ -33,28 +54,16 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  //Profile Section Edit
-  const [title, setTitle] = useState("Default Title");
-  const [description, setDescription] = useState("Default Description");
-  const [imageProfile, setImageProfile] = useState("https://joeschmoe.io/api/v1/random");
-  const [edit, setEdit] = useState(false);
-
+  //Profile Section
   const profileEdit = () => {
-    // console.log("From Profile Card");
     setEdit(true);
-    // console.log(title, description);
   };
   const updateProfile = (title, description, image) => {
     setTitle(title);
     setDescription(description);
     setImageProfile(image);
   };
-  const [editTask, setEditTask] = useState(false);
 
-  const editTaskItem = () => {
-    console.log("Edit Task Item");
-    
-  };
   return (
     <TaskContext.Provider
       value={{
@@ -65,6 +74,7 @@ export const TaskProvider = ({ children }) => {
         edit,
         imageProfile,
         editTask,
+        notificationTitle,
         editTaskItem,
         setEdit,
         deleteTask,
@@ -72,7 +82,7 @@ export const TaskProvider = ({ children }) => {
         deleteParmanent,
         profileEdit,
         updateProfile,
-        setEditTask
+        sendNotification,
       }}>
       {children}
     </TaskContext.Provider>

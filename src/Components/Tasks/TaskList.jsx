@@ -1,7 +1,7 @@
 import React from "react";
 import CardComp from "../Shared/CardComp";
 import TaskItem from "./TaskItem";
-import AddNewTask from "./AddNewTask";
+import UpdateNewTask from "./UpdateNewTask";
 import { useContext } from "react";
 import TaskContext from "../Context/TaskContext";
 
@@ -13,7 +13,7 @@ export default function TaskList() {
   } else {
     return (
       <>
-        {editTask && <AddNewTask />}
+        {editTask && <UpdateNewTask />}
         {task.map((task) => (
           // console.log(task)
           <TaskItem key={task.id} task={task} />
