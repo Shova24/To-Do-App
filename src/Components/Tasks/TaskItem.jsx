@@ -4,16 +4,20 @@ import { useContext } from "react";
 import TaskContext from "../Context/TaskContext";
 
 import { EditOutlined, CloseOutlined } from "@ant-design/icons";
-import { Typography } from "antd";
+import { Space, Typography } from "antd";
 
 const { Text } = Typography;
 
 export default function TaskItem({ task }) {
-  const { deleteTask,editTaskItem } = useContext(TaskContext);
+  const { deleteTask, editTaskItem } = useContext(TaskContext);
   return (
     <>
       <CardComp title="User Profile" actions={[<EditOutlined key="edit" onClick={editTaskItem} />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
-        <Text>{task.task}</Text>
+        <Space direction="vertical">
+          <Text>Task Title : {task.task}</Text>
+          <Text>Tast Priority : {task.priority}</Text>
+          <Text>Task DeadLine : {task.deadline}</Text>
+        </Space>
       </CardComp>
     </>
   );

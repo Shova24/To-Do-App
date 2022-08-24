@@ -1,6 +1,7 @@
 import { Modal } from "antd";
 import React, { useState, useContext } from "react";
 import TaskContext from "../Context/TaskContext";
+import TaskForm from "../Shared/TaskForm";
 
 export default function ModalComponent({ modalTitle }) {
   const { visible, setVisible } = useContext(TaskContext);
@@ -23,7 +24,7 @@ export default function ModalComponent({ modalTitle }) {
   return (
     <>
       <Modal title={modalTitle} visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
-        <p>{modalText}</p>
+        <TaskForm formTitle="Update Task " />
       </Modal>
     </>
   );
