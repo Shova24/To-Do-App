@@ -12,11 +12,11 @@ export default function TaskItem({ task }) {
   const { deleteTask, editTaskItem } = useContext(TaskContext);
   return (
     <>
-      <CardComp title="User Profile" actions={[<EditOutlined key="edit" onClick={editTaskItem} />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
+      <CardComp title="Task" actions={[<EditOutlined key="edit" onClick={editTaskItem} />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
         <Space direction="vertical">
           <Text>Task Title : {task.task}</Text>
           <Text>Tast Priority : {task.priority}</Text>
-          <Text>Task DeadLine : {task.deadline}</Text>
+          <Text>Task DeadLine : {`${task.deadlineDate} from ${task?.deadlineTime[0]} to ${task?.deadlineTime[1]}`}</Text>
         </Space>
       </CardComp>
     </>

@@ -4,18 +4,8 @@ const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
   //Task Section States
-  const [taskTitle, setTaskTitle] = useState("Default Task Title");
-  const [taskPriority, setTaskPriority] = useState(10);
-  const [deadLineTime, setDeadLineTime] = useState(Date());
-  const [deadLineDate, setDeadLineDate] = useState(Date());
-  const [task, setTask] = useState([
-    {
-      id: 1,
-      task: taskTitle,
-      priority: taskPriority,
-      deadline: deadLineDate + " " + deadLineTime,
-    },
-  ]);
+
+  const [task, setTask] = useState([]);
   const [deletedTask, setDeletedTask] = useState([]);
 
   //Profile Section States

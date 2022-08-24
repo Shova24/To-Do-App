@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-import { Typography, Form, Input, Button, Radio, DatePicker, TimePicker } from "antd";
+import { Typography, Form, Input, Button, Radio, DatePicker, TimePicker, Row, Col } from "antd";
 import moment from "moment";
 
-import TaskContext from "../Context/TaskContext";
 import Notification from "./Notification";
 
 const { TextArea } = Input;
 const { Title } = Typography;
-const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
 
 export default function TaskForm({ formTitle, handleTask }) {
   const [form] = Form.useForm();
@@ -22,10 +20,11 @@ export default function TaskForm({ formTitle, handleTask }) {
       id: uuidv4(),
       task: values.tasktitle,
       priority: values.priority,
-      deadline: values.deadlineDate + ' ' + values.deadlineTime,
+      deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
+      deadlineTime: [moment(values.deadlineTime[0]).format("h:mm:ss"), moment(values.deadlineTime[1]).format("h:mm:ss")],
     };
     console.log("====================================");
-    console.log(values);
+    console.log(newTask);
     console.log("====================================");
     handleTask(newTask);
     form.resetFields();
@@ -36,50 +35,74 @@ export default function TaskForm({ formTitle, handleTask }) {
   return (
     <>
       <Title level={3}>{formTitle}</Title>
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        onFinish={onFinish}>
-        <Form.Item
-          name="tasktitle"
-          label="Task"
-          rules={[
-            {
-              required: true,
-              message: "Please Enter a task",
-            },
-          ]}>
-          <TextArea rows={3} showCount maxLength={100} />
-        </Form.Item>
-        <Form.Item name="priority" label="Priority">
-          <Radio.Group>
-            {rating.map((item) => (
-              <Radio key={item} value={item}>
-                {item}
-              </Radio>
-            ))}
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Form.Item name="deadlineDate" label="Deadline">
-              <DatePicker defaultValue={moment("01/01/2015", dateFormatList[0])} format={dateFormatList} />
+      <Form form={form} layout="horizontal" onFinish={onFinish}>
+        <Row gutter={[8, 8]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="tasktitle"
+              label="Task"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter a task",
+                },
+              ]}>
+              <TextArea rows={3} showCount maxLength={100} />
             </Form.Item>
-            <Form.Item name="deadlineTime" label="Deadline">
-              <TimePicker.RangePicker defaultValue={moment("12:08:23", "HH:mm:ss")} size="large" />
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="priority"
+              label="Priority"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Add Priority",
+                },
+              ]}>
+              <Radio.Group>
+                {rating.map((item) => (
+                  <Radio key={item} value={item}>
+                    {item}
+                  </Radio>
+                ))}
+              </Radio.Group>
             </Form.Item>
-          </div>
-        </Form.Item>
-        <div style={{ display: "flex", justifyContent: "flex-end", marginRight: "15px", marginBottom: "10px" }}>
-          <Button shape="round" size="middle" htmlType="submit">
+          </Col>
+
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="deadlineDate"
+              label="Date"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter a Finishing Date",
+                },
+              ]}>
+              <DatePicker style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="deadlineTime"
+              label="Time"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter a Probable Ending Time",
+                },
+              ]}>
+              <TimePicker.RangePicker />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row justify="end">
+          <Button style={{ backgroundColor: "hotpink", color: "white", fontWeight: "bold", border: "none" }} shape="round" size="middle" htmlType="submit">
             Add
           </Button>
-        </div>
+        </Row>
       </Form>
     </>
   );
