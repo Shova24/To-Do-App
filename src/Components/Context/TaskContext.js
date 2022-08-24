@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import ModalComponent from "../Shared/ModalComponent";
 import Notification from "../Shared/Notification";
 const TaskContext = createContext();
 
@@ -12,14 +11,12 @@ export const TaskProvider = ({ children }) => {
     },
   ]);
   const [deletedTask, setDeletedTask] = useState([]);
-  const [editTask, setEditTask] = useState(false);
 
   //Profile Section States
   const [title, setTitle] = useState("Default Title");
   const [description, setDescription] = useState("Default Description");
   const [imageProfile, setImageProfile] = useState("https://joeschmoe.io/api/v1/random");
   const [edit, setEdit] = useState(false);
-
 
   //Modal States
   const [visible, setVisible] = useState(false);
@@ -28,9 +25,7 @@ export const TaskProvider = ({ children }) => {
     setTask([...task, newTask]);
   };
   const editTaskItem = () => {
-    setEditTask(true);
-    ModalComponent();
-    console.log("Edit Task Item : ", editTask);
+    setVisible(true);
   };
   const deleteTask = (id) => {
     if (window.confirm("are you sure you want to delete?")) {
@@ -71,11 +66,9 @@ export const TaskProvider = ({ children }) => {
         description,
         edit,
         imageProfile,
-        editTask,
-        visible, 
-        
+        visible,
+
         setVisible,
-        setEditTask,
         editTaskItem,
         setEdit,
         deleteTask,
