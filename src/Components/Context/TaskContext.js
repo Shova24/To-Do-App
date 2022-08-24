@@ -20,13 +20,16 @@ export const TaskProvider = ({ children }) => {
   const [imageProfile, setImageProfile] = useState("https://joeschmoe.io/api/v1/random");
   const [edit, setEdit] = useState(false);
 
+
+  //Modal States
+  const [visible, setVisible] = useState(false);
   //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
   };
   const editTaskItem = () => {
     setEditTask(true);
-    <ModalComponent />;
+    ModalComponent();
     console.log("Edit Task Item : ", editTask);
   };
   const deleteTask = (id) => {
@@ -69,7 +72,9 @@ export const TaskProvider = ({ children }) => {
         edit,
         imageProfile,
         editTask,
-
+        visible, 
+        
+        setVisible,
         setEditTask,
         editTaskItem,
         setEdit,
