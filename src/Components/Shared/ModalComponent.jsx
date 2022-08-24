@@ -2,13 +2,10 @@ import { Modal } from "antd";
 import React, { useState, useContext } from "react";
 import TaskContext from "../Context/TaskContext";
 
-export default function ModalComponent() {
-  const { visible, setVisible} = useContext(TaskContext);
-
+export default function ModalComponent({ modalTitle }) {
+  const { visible, setVisible } = useContext(TaskContext);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState("Content of the modal");
-
-
 
   const handleOk = () => {
     setModalText("The modal will be closed after two seconds");
@@ -25,7 +22,7 @@ export default function ModalComponent() {
 
   return (
     <>
-      <Modal title="Title" visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
+      <Modal title={modalTitle} visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
         <p>{modalText}</p>
       </Modal>
     </>

@@ -6,7 +6,7 @@ import { HomeOutlined } from "@ant-design/icons";
 export default function BreadCrumbComp() {
   return (
     <>
-      <Breadcrumb style={{ marginTop: "8%", marginLeft: "13%", paddingBottom: "25px" }}>
+      <Breadcrumb style={{ marginTop: "40px", marginLeft: "35%", paddingBottom: "10px" }}>
         <Breadcrumb.Item>
           <Link to={"/"}>
             <HomeOutlined />

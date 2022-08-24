@@ -8,7 +8,7 @@ export default function Notification(title) {
     icon: (
       <SmileOutlined
         style={{
-          color: "#108ee9",
+          color: "hotpink",
         }}
       />
     ),

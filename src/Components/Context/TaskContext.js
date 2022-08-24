@@ -38,10 +38,10 @@ export const TaskProvider = ({ children }) => {
   };
   const deleteParmanent = (id) => {
     if (window.confirm("are you sure you want to delete Permanently?")) {
-      console.log(
-        id,
-        deletedTask.filter((item) => console.log(item))
-      );
+      // console.log(
+      //   id,
+      //   deletedTask.filter((item) => console.log(item))
+      // );
       setDeletedTask(deletedTask.filter((item) => item.id !== id));
       Notification("Task Permanently Deleted");
     }

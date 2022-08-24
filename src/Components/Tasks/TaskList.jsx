@@ -13,7 +13,7 @@ export default function TaskList() {
   } else {
     return (
       <>
-        <ModalComponent />
+        <ModalComponent modalTitle={"Edit this Task"} modalTexts={"ssss"} />
         {task.map((task) => (
           <TaskItem key={task.id} task={task} />
         ))}
