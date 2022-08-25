@@ -1,26 +1,27 @@
 // 3rd party libraries
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 // internal libraries
 import DeletedTask from "./Components/Tasks/DeletedTask";
 import TaskList from "./Components/Tasks/TaskList";
-import BreadCrumbComp from "./Components/Shared/BreadCrumbComp";
 import AddNewTask from "./Components/Tasks/AddNewTask";
 
 // css/ less
 import "./index.css";
-import HeaderComponent from "./Components/Shared/HeaderComponent";
-import { Layout, Space } from "antd";
+import { Layout, Space, Menu, Typography } from "antd";
 import { contentStyle } from "./Style";
 import ProfileCard from "./Components/HomePage/ProfileComp";
-
+import { HeaderStyle } from "./Style";
+const { Title } = Typography;
 const { Header, Content } = Layout;
 
 function App() {
   return (
     <>
       <Header>
-        <HeaderComponent />
+        <Title style={HeaderStyle}>
+          To<span style={{ color: "hotpink", fontStyle: "oblique" }}>DO</span>!
+        </Title>
       </Header>
       <Content style={contentStyle}>
         <Space
@@ -29,7 +30,21 @@ function App() {
           style={{
             display: "flex",
           }}>
-          <BreadCrumbComp />
+          <Menu mode="horizontal" style={{ display: "flex", justifyContent: "center" }}>
+            <Menu.Item>
+              <Link to={"/"}>Home</Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to={"/add-task"}>Add Task</Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to={"/task-list"}>Task List</Link>
+            </Menu.Item>
+            <Menu.Item>
+              <Link to={"/deleted-task"}>Deleted Task</Link>
+            </Menu.Item>
+          </Menu>
+          {/* <BreadCrumbComp /> */}
           <Routes>
             <Route path="/" element={<ProfileCard />} />
             <Route path="/add-task" element={<AddNewTask />} />

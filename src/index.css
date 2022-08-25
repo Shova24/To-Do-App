@@ -1,1 +1,12 @@
 @import '~antd/dist/antd.css';
+
+.customBtn {
+    background-color: hotpink;
+    font-weight: bold;
+    border: none
+}
+
+/* .customBtn > .ant-typography {
+    color: white;
+} */
+

@@ -8,12 +8,14 @@ import moment from "moment";
 import Notification from "./Notification";
 
 const { TextArea } = Input;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export default function TaskForm({ formTitle, handleTask, visible }) {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const rating = [1, 2, 3, 4, 5];
+
+  const updateTask = () => {};
 
   const onFinish = (values) => {
     const newTask = {
@@ -23,9 +25,14 @@ export default function TaskForm({ formTitle, handleTask, visible }) {
       deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
       deadlineTime: [moment(values.deadlineTime[0]).format("h:mm:ss"), moment(values.deadlineTime[1]).format("h:mm:ss")],
     };
-    handleTask(newTask);
+    if (!visible) {
+      handleTask(newTask);
+      Notification("Added Task");
+    } else {
+      updateTask();
+    }
+
     form.resetFields();
-    Notification("Added Task");
     navigate("/task-list");
   };
 
@@ -97,17 +104,10 @@ export default function TaskForm({ formTitle, handleTask, visible }) {
 
         <Row justify="end">
           <Col>
-            <Button style={{ backgroundColor: "hotpink", color: "white", fontWeight: "bold", border: "none" }} shape="round" size="middle" htmlType="submit">
-              Add
+            <Button className="customBtn"shape="round" size="middle" htmlType="submit">
+              {visible ? <Text>Update</Text> : <Text>Add</Text>}
             </Button>
           </Col>
-          {visible && (
-            <Col>
-              <Button style={{ backgroundColor: "hotpink", color: "white", fontWeight: "bold", border: "none", marginLeft: "5px" }} shape="round" size="middle" htmlType="submit">
-                Close
-              </Button>
-            </Col>
-          )}
         </Row>
       </Form>
     </>
