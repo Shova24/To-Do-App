@@ -10,7 +10,7 @@ import Notification from "./Notification";
 const { TextArea } = Input;
 const { Title } = Typography;
 
-export default function TaskForm({ formTitle, handleTask }) {
+export default function TaskForm({ formTitle, handleTask, visible }) {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const rating = [1, 2, 3, 4, 5];
@@ -23,9 +23,6 @@ export default function TaskForm({ formTitle, handleTask }) {
       deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
       deadlineTime: [moment(values.deadlineTime[0]).format("h:mm:ss"), moment(values.deadlineTime[1]).format("h:mm:ss")],
     };
-    console.log("====================================");
-    console.log(newTask);
-    console.log("====================================");
     handleTask(newTask);
     form.resetFields();
     Notification("Added Task");
@@ -99,9 +96,18 @@ export default function TaskForm({ formTitle, handleTask }) {
         </Row>
 
         <Row justify="end">
-          <Button style={{ backgroundColor: "hotpink", color: "white", fontWeight: "bold", border: "none" }} shape="round" size="middle" htmlType="submit">
-            Add
-          </Button>
+          <Col>
+            <Button style={{ backgroundColor: "hotpink", color: "white", fontWeight: "bold", border: "none" }} shape="round" size="middle" htmlType="submit">
+              Add
+            </Button>
+          </Col>
+          {visible && (
+            <Col>
+              <Button style={{ backgroundColor: "hotpink", color: "white", fontWeight: "bold", border: "none", marginLeft: "5px" }} shape="round" size="middle" htmlType="submit">
+                Close
+              </Button>
+            </Col>
+          )}
         </Row>
       </Form>
     </>

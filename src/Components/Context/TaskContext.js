@@ -1,11 +1,12 @@
 import { createContext, useState } from "react";
 import Notification from "../Shared/Notification";
+import TaskData from "../../Data/TaskData";
+
 const TaskContext = createContext();
-
 export const TaskProvider = ({ children }) => {
+  //---------------------------------------States---------------------------------------
   //Task Section States
-
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState(TaskData);
   const [deletedTask, setDeletedTask] = useState([]);
 
   //Profile Section States
@@ -16,13 +17,28 @@ export const TaskProvider = ({ children }) => {
 
   //Modal States
   const [visible, setVisible] = useState(false);
+
+  //Edit task States
+  const [editTask, setEditTask] = useState({
+    item: {},
+    edit: false,
+  });
+
+  //--------------------------------------------Functions----------------------------------
   //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
+    // console.log(newTask);
   };
-  const editTaskItem = () => {
+  const editTaskItem = (item) => {
     setVisible(true);
+    console.log("====================================");
+    console.log(item);
+    console.log("====================================");
+    setEditTask({ item, edit: true });
   };
+
+  const updateTaskItem = (id, updatedItem) => {};
   const deleteTask = (id) => {
     if (window.confirm("are you sure you want to delete?")) {
       setTask(task.filter((el) => el.id !== id));

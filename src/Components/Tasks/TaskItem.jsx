@@ -12,7 +12,7 @@ export default function TaskItem({ task }) {
   const { deleteTask, editTaskItem } = useContext(TaskContext);
   return (
     <>
-      <CardComp title="Task" actions={[<EditOutlined key="edit" onClick={editTaskItem} />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
+      <CardComp title="Task" actions={[<EditOutlined key="edit" onClick={()=>editTaskItem(task)} />, <CloseOutlined key="delete" onClick={() => deleteTask(task.id)} />]}>
         <Space direction="vertical">
           <Text>Task Title : {task.task}</Text>
           <Text>Tast Priority : {task.priority}</Text>

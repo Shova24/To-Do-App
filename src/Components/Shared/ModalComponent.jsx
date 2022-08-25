@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import TaskContext from "../Context/TaskContext";
 import TaskForm from "../Shared/TaskForm";
 
@@ -23,8 +23,8 @@ export default function ModalComponent({ modalTitle }) {
 
   return (
     <>
-      <Modal title={modalTitle} visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel}>
-        <TaskForm formTitle="Update Task " />
+      <Modal title={modalTitle} visible={visible} onOk={handleOk} confirmLoading={confirmLoading} onCancel={handleCancel} footer={null}>
+        <TaskForm formTitle="Update Task " visible={visible} />
       </Modal>
     </>
   );

@@ -2,27 +2,38 @@ const TaskData = [
   {
     id: 1,
     task: "Adding Item to the Task List.",
-    // starting: "9.00 PM, 20 August, 2022",
-    // ending: "12.00 PM, 20 August, 2022",
+    priority: 3,
+    deadlineDate: "2022-08-10",
+    deadlineTime: ["2.00pm", "3.00pm"],
   },
   {
     id: 2,
     task: "Deleting Item From the Task List.",
-    // starting: "9.00 PM, 20 August, 2022",
-    // ending: "12.00 PM, 20 August, 2022",
+    priority: 3,
+    deadlineDate: "2022-08-10",
+    deadlineTime: ["2.00pm", "3.00pm"],
   },
-  {
-    id: 3,
-    task: "Store the Deleted Item.",
-    // starting: "9.00 PM, 20 August, 2022",
-    // ending: "12.00 PM, 20 August, 2022",
-  },
-  {
-    id: 4,
-    task: "Permanently Delte those Tasks",
-    // starting: "9.00 PM, 20 August, 2022",
-    // ending: "12.00 PM, 20 August, 2022",
-  },
+  // {
+  //   id: 3,
+  //   task: "Store the Deleted Item.",
+  //   priority: 3,
+  //   deadlineDate: "2022-08-10",
+  //   deadlineTime: ["2.00pm", "3.00pm"],
+  // },
+  // {
+  //   id: 4,
+  //   task: "Permanently Delte those Tasks",
+  //   priority: 3,
+  //   deadlineDate: "2022-08-10",
+  //   deadlineTime: ["2.00pm", "3.00pm"],
+  // },
+  // {
+  //   id: "5",
+  //   task: "Update : nam quas laudantium! Esse laudantium quos iure quo!",
+  //   priority: 3,
+  //   deadlineDate: "2022-08-10",
+  //   deadlineTime: ["2.00pm", "3.00pm"],
+  // },
 ];
 
 export default TaskData;
