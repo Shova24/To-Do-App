@@ -41,21 +41,17 @@ export const TaskProvider = ({ children }) => {
 
   const deleteTask = (id) => {
     // if (window.confirm("are you sure you want to delete?")) {
-      setTask(task.filter((el) => el.id !== id));
-      const deletedItem = task.find((el) => el.id === id);
-      setDeletedTask([...deletedTask, deletedItem]);
-      Notification("Task Deleted");
+    setTask(task.filter((el) => el.id !== id));
+    const deletedItem = task.find((el) => el.id === id);
+    setDeletedTask([...deletedTask, deletedItem]);
+    Notification("Task Deleted");
     // }
   };
   const deleteParmanent = (id) => {
-    if (window.confirm("are you sure you want to delete Permanently?")) {
-      // console.log(
-      //   id,
-      //   deletedTask.filter((item) => console.log(item))
-      // );
-      setDeletedTask(deletedTask.filter((item) => item.id !== id));
-      Notification("Task Permanently Deleted");
-    }
+    // if (window.confirm("are you sure you want to delete Permanently?")) {
+    setDeletedTask(deletedTask.filter((item) => item.id !== id));
+    Notification("Task Permanently Deleted");
+    // }
   };
 
   //Profile Section
