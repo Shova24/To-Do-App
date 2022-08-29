@@ -32,10 +32,11 @@ export const TaskProvider = ({ children }) => {
     // console.log(newTask);
   };
   const editTaskItem = (item) => {
-    console.log(item);
     setEditTask({ item, edit: true });
+
     // updateTaskItem(item)
   };
+  console.log(editTask);
 
   const updateTaskItem = (id, updatedItem) => {
     console.log("updated : ", id);
@@ -69,7 +70,7 @@ export const TaskProvider = ({ children }) => {
         deletedTask,
         title,
         description,
-        edit,
+        editTask,
         imageProfile,
         visible,
 
