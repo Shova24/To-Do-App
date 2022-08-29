@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import Notification from "../Shared/Notification";
 import TaskData from "../../Data/TaskData";
+import PopUp from "../Shared/PopUP";
 
 const TaskContext = createContext();
 export const TaskProvider = ({ children }) => {
@@ -32,21 +33,19 @@ export const TaskProvider = ({ children }) => {
   };
   const editTaskItem = (item) => {
     setVisible(true);
-    console.log("====================================");
-    console.log(item);
-    console.log("====================================");
+    // console.log(item);
     setEditTask({ item, edit: true });
   };
 
   const updateTaskItem = (id, updatedItem) => {};
-  const deleteTask = (id) => {
-    if (window.confirm("are you sure you want to delete?")) {
-      setTask(task.filter((el) => el.id !== id));
 
+  const deleteTask = (id) => {
+    // if (window.confirm("are you sure you want to delete?")) {
+      setTask(task.filter((el) => el.id !== id));
       const deletedItem = task.find((el) => el.id === id);
       setDeletedTask([...deletedTask, deletedItem]);
       Notification("Task Deleted");
-    }
+    // }
   };
   const deleteParmanent = (id) => {
     if (window.confirm("are you sure you want to delete Permanently?")) {
