@@ -1,7 +1,6 @@
 import { createContext, useState } from "react";
 import Notification from "../Shared/Notification";
 import TaskData from "../../Data/TaskData";
-import PopUp from "../Shared/PopUP";
 
 const TaskContext = createContext();
 export const TaskProvider = ({ children }) => {

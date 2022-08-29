@@ -6,29 +6,24 @@ import TaskContext from "../Context/TaskContext";
 const { TextArea } = Input;
 
 export default function EditProfile() {
-    const [form] = Form.useForm();
-  const { setEdit , updateProfile} = useContext(TaskContext);
+  const [form] = Form.useForm();
+  const { setEdit, updateProfile } = useContext(TaskContext);
 
   const onFinish = (values) => {
-    console.log("updated : ",values.title );
+    console.log("updated : ", values.title);
     setEdit(false);
-    updateProfile(values.title, values.description, values.image)
+    updateProfile(values.title, values.description, values.image);
     form.resetFields();
-
   };
   return (
     <>
       <CardComp>
         Edit Profile
-        <Form onFinish={onFinish}  form={form}> 
-          <Form.Item 
-            name= 'title' 
-            label="Title">
+        <Form onFinish={onFinish} form={form}>
+          <Form.Item name="title" label="Title">
             <Input />
           </Form.Item>
-          <Form.Item 
-            name='description' 
-            label="Description">
+          <Form.Item name="description" label="Description">
             <TextArea rows={4} />
           </Form.Item>
           <Form.Item label="Image" valuePropName="image">
@@ -45,8 +40,10 @@ export default function EditProfile() {
             </Upload>
           </Form.Item>
 
-          <Form.Item label="Button"  style={{ display: "flex", justifyContent: "flex-end" }} >
-            <Button type="primary" htmlType='submit'>Button</Button>
+          <Form.Item label="Button" style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button type="primary" htmlType="submit">
+              Button
+            </Button>
           </Form.Item>
         </Form>
       </CardComp>
