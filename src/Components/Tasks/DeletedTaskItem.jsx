@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import TaskContext from "../Context/TaskContext";
 
 import { CloseOutlined } from "@ant-design/icons";
-import { Typography, message, Popconfirm } from "antd";
+import { Typography, Space, Popconfirm } from "antd";
 
 const { Text } = Typography;
 
@@ -34,7 +34,7 @@ export default function DeletedTaskItem({ deletedTask }) {
   return (
     <>
       <CardComp
-        title="User Profile"
+        title="Deleted Items"
         actions={[
           <></>,
           <Popconfirm
@@ -48,7 +48,11 @@ export default function DeletedTaskItem({ deletedTask }) {
           </Popconfirm>,
           // <CloseOutlined key="delete" onClick={() => deleteParmanent(deletedTask.id)} />,
         ]}>
-        <Text>{deletedTask.task}</Text>
+        <Space direction="vertical">
+          <Text>Task Title : {deletedTask.task}</Text>
+          <Text>Tast Priority : {deletedTask.priority}</Text>
+          <Text>Task DeadLine : {`${deletedTask.deadlineDate} from ${deletedTask?.deadlineTime[0]} to ${deletedTask?.deadlineTime[1]}`}</Text>
+        </Space>
       </CardComp>
     </>
   );

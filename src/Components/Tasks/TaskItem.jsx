@@ -13,10 +13,6 @@ export default function TaskItem({ task }) {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 
-  const showPopconfirm = () => {
-    setVisible(true);
-  };
-
   const handleOk = () => {
     setConfirmLoading(true);
     deleteTask(task.id);

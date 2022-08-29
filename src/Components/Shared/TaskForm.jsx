@@ -1,10 +1,8 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-
 import { Typography, Form, Input, Button, Radio, DatePicker, TimePicker, Row, Col } from "antd";
 import moment from "moment";
-
 import Notification from "./Notification";
 
 const { TextArea } = Input;
@@ -18,18 +16,16 @@ export default function TaskForm({ formTitle, handleTask, visible }) {
   const updateTask = () => {};
 
   const onFinish = (values) => {
-    const newTask = {
-      id: uuidv4(),
-      task: values.tasktitle,
-      priority: values.priority,
-      deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
-      deadlineTime: [moment(values.deadlineTime[0]).format("h:mm:ss"), moment(values.deadlineTime[1]).format("h:mm:ss")],
-    };
     if (!visible) {
+      const newTask = {
+        id: uuidv4(),
+        task: values.tasktitle,
+        priority: values.priority,
+        deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
+        deadlineTime: [moment(values.deadlineTime[0]).format("h:mm:ss"), moment(values.deadlineTime[1]).format("h:mm:ss")],
+      };
       handleTask(newTask);
       Notification("Added Task");
-    } else {
-      updateTask();
     }
 
     form.resetFields();
@@ -104,8 +100,8 @@ export default function TaskForm({ formTitle, handleTask, visible }) {
 
         <Row justify="end">
           <Col>
-            <Button className="customBtn"shape="round" size="middle" htmlType="submit">
-              {visible ? <Text>Update</Text> : <Text>Add</Text>}
+            <Button className="customBtn" shape="round" size="middle" htmlType="submit">
+              <Text>Add</Text>
             </Button>
           </Col>
         </Row>
