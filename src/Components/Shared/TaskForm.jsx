@@ -22,7 +22,7 @@ export default function TaskForm({ formTitle, handleTask, visible }) {
         task: values.tasktitle,
         priority: values.priority,
         deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
-        deadlineTime: [moment(values.deadlineTime[0]).format("h:mm:ss"), moment(values.deadlineTime[1]).format("h:mm:ss")],
+        deadlineTime: [moment(values.deadlineTime[0]), moment(values.deadlineTime[1])],
       };
       handleTask(newTask);
       Notification("Added Task");

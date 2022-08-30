@@ -29,14 +29,12 @@ export const TaskProvider = ({ children }) => {
   //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
-    // console.log(newTask);
+    console.log(newTask);
   };
   const editTaskItem = (item) => {
     setEditTask({ item, edit: true });
-
     // updateTaskItem(item)
   };
-  console.log(editTask);
 
   const updateTaskItem = (id, updatedItem) => {
     console.log("updated : ", id);
@@ -73,6 +71,7 @@ export const TaskProvider = ({ children }) => {
         editTask,
         imageProfile,
         visible,
+        edit,
 
         setVisible,
         editTaskItem,

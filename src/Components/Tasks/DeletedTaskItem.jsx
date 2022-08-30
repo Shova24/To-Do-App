@@ -10,7 +10,7 @@ const { Text } = Typography;
 
 export default function DeletedTaskItem({ deletedTask }) {
   const { deleteParmanent } = useContext(TaskContext);
-  const { deleteTask, editTaskItem } = useContext(TaskContext);
+  // const { deleteTask, editTaskItem } = useContext(TaskContext);
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
 

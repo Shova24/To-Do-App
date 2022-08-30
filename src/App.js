@@ -44,7 +44,7 @@ function App() {
               <Link to={"/deleted-task"}>Deleted Task</Link>
             </Menu.Item>
           </Menu>
-          {/* <BreadCrumbComp /> */}
+       
           <Routes>
             <Route path="/" element={<ProfileCard />} />
             <Route path="/add-task" element={<AddNewTask />} />
