@@ -80,6 +80,8 @@ export const TaskProvider = ({ children }) => {
         profileEdit,
         updateProfile,
         updateTaskItem,
+        setTask,
+        setDeletedTask,
       }}>
       {children}
     </TaskContext.Provider>

@@ -12,7 +12,7 @@ export default function DeletedTask() {
       {deletedTask.length === 0 && <CardComp>No Task Has Been Deleted Yet.</CardComp>}
 
       {deletedTask.map((task) => (
-        <DeletedTaskItem key={task.id} deletedTask={task} />
+        <DeletedTaskItem key={task.id} deletedTaskItem={task} />
       ))}
     </>
   );
