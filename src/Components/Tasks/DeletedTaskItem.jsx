@@ -32,10 +32,7 @@ export default function DeletedTaskItem({ deletedTaskItem }) {
     setVisible(false);
   };
   const revertItem = () => {
-    // console.log(deletedTaskItem);
-    // console.log(deletedTask);
     setTask([...task, deletedTaskItem]);
-    // console.log(task);
     const newItem = deletedTask.filter((el) => el.id !== deletedTaskItem.id);
     setDeletedTask(newItem);
     console.log("revert Item : ", newItem);

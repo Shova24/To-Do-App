@@ -40,11 +40,18 @@ export const TaskProvider = ({ children }) => {
   };
 
   const deleteTask = (id) => {
-    setTask(task.filter((el) => el.id !== id));
-    const deletedItem = task.find((el) => el.id === id);
-    setDeletedTask([...deletedTask, deletedItem]);
+    console.log(id);
+
+    const sItem = task.find((el) => el.id === id);
+    setDeletedTask([...deletedTask, sItem]);
+    console.log(sItem);
+    console.log(task);
+    const balchal = task.filter((el) => el.id !== id);
+    console.log(balchal);
+    setTask([...balchal]);
     Notification("Task Deleted");
   };
+
   const deleteParmanent = (id) => {
     setDeletedTask(deletedTask.filter((item) => item.id !== id));
     Notification("Task Permanently Deleted");
