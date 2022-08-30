@@ -11,9 +11,15 @@ import TaskForm from "../Shared/TaskForm";
 
 const { TextArea } = Input;
 const { Title, Text } = Typography;
+const rating = [1, 2, 3, 4, 5];
 
 export default function TaskItem({ task }) {
-  const { deleteTask } = useContext(TaskContext);
+  const { deleteTask, updateTaskItem } = useContext(TaskContext);
+  //Form Modal
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const [itemId, setItemId] = useState(0);
+
   //PopUp state
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -23,16 +29,12 @@ export default function TaskItem({ task }) {
   const [confirmLoadingModal, setConfirmLoadingModal] = useState(false);
   const [modalText, setModalText] = useState("Content of the modal");
 
-  //Form Modal
-  const [form] = Form.useForm();
-  const navigate = useNavigate();
-  const rating = [1, 2, 3, 4, 5];
-
   const updateTask = () => {};
 
   //EditModal
   const editTaskItem = (element) => {
     console.log(element);
+    setItemId(element.id);
     setVisibleModal(true);
     form.setFieldsValue({
       tasktitle: element.task,
@@ -54,8 +56,18 @@ export default function TaskItem({ task }) {
     setVisibleModal(false);
   };
   //Edit Form
-  const onFinish = () => {
-    console.log("on Finish Form");
+  const onFinish = (values) => {
+    console.log("Log Finish : ", values);
+    const newTask = {
+      id: itemId,
+      task: values.tasktitle,
+      priority: values.priority,
+      deadlineDate: moment(values.deadlineDate).format("YYYY-MM-DD"),
+      deadlineTime: [moment(values.deadlineTime[0]), moment(values.deadlineTime[1])],
+    };
+    updateTaskItem(itemId, newTask);
+    console.log(newTask);
+    setVisibleModal(false);
   };
   //Delete PopUp
   const handleOk = () => {
@@ -91,7 +103,7 @@ export default function TaskItem({ task }) {
           <Text>Tast Priority : {task.priority}</Text>
           <Text>Task DeadLine : {`${task.deadlineDate} from ${task?.deadlineTime[0].format("h:mm:ss")} to ${task?.deadlineTime[1].format("h:mm:ss")}`}</Text>
         </Space>
-        <Modal title="Title" visible={visibleModal} onOk={handleModalOk} confirmLoading={confirmLoadingModal} onCancel={handleCancelModal}>
+        <Modal title="Title" visible={visibleModal} onOk={handleModalOk} confirmLoading={confirmLoadingModal} onCancel={handleCancelModal} footer={null}>
           <CardComp>
             {/* <TaskForm /> */}
             <Title level={3}>Edit Task</Title>
@@ -124,6 +136,13 @@ export default function TaskItem({ task }) {
                     <TimePicker.RangePicker />
                   </Form.Item>
                 </Col>
+                <Row justify="end">
+                  <Col>
+                    <Button className="customBtn" shape="round" size="middle" htmlType="submit">
+                      <Text>update</Text>
+                    </Button>
+                  </Col>
+                </Row>
               </Row>
             </Form>
           </CardComp>

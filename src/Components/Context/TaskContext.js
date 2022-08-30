@@ -29,15 +29,14 @@ export const TaskProvider = ({ children }) => {
   //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
-    console.log(newTask);
-  };
-  const editTaskItem = (item) => {
-    setEditTask({ item, edit: true });
-    // updateTaskItem(item)
+    // console.log(newTask);
   };
 
   const updateTaskItem = (id, updatedItem) => {
-    console.log("updated : ", id);
+    const up = task.filter((item) => item.id !== id);
+    setTask([...up, updatedItem]);
+
+    // console.log("updated : ", updatedList);
   };
 
   const deleteTask = (id) => {
@@ -74,13 +73,13 @@ export const TaskProvider = ({ children }) => {
         edit,
 
         setVisible,
-        editTaskItem,
         setEdit,
         deleteTask,
         addTask,
         deleteParmanent,
         profileEdit,
         updateProfile,
+        updateTaskItem,
       }}>
       {children}
     </TaskContext.Provider>
