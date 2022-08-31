@@ -1,5 +1,6 @@
 // 3rd party libraries
-import { Routes, Route, Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 // internal libraries
 import DeletedTask from "./Components/Tasks/DeletedTask";
@@ -16,6 +17,14 @@ const { Title } = Typography;
 const { Header, Content } = Layout;
 
 function App() {
+  const location = useLocation();
+  const [currentKey, setCurrentKey] = useState("");
+
+  useEffect(() => {
+    console.log(location.pathname);
+    setCurrentKey(location.pathname);
+  }, [location.pathname]);
+
   return (
     <>
       <Header>
@@ -30,21 +39,21 @@ function App() {
           style={{
             display: "flex",
           }}>
-          <Menu mode="horizontal" style={{ display: "flex", justifyContent: "center" }}>
-            <Menu.Item>
+          <Menu mode="horizontal" selectedKeys={[currentKey]} style={{ display: "flex", justifyContent: "center" }}>
+            <Menu.Item key="/">
               <Link to={"/"}>Home</Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item key="/add-task">
               <Link to={"/add-task"}>Add Task</Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item key="/task-list">
               <Link to={"/task-list"}>Task List</Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item key="/deleted-task">
               <Link to={"/deleted-task"}>Deleted Task</Link>
             </Menu.Item>
           </Menu>
-       
+
           <Routes>
             <Route path="/" element={<ProfileCard />} />
             <Route path="/add-task" element={<AddNewTask />} />

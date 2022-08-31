@@ -9,7 +9,7 @@ import { Typography, Space, Popconfirm } from "antd";
 const { Text } = Typography;
 
 export default function DeletedTaskItem({ deletedTaskItem }) {
-  const { deleteParmanent, setTask, task, setDeletedTask, deletedTask } = useContext(TaskContext);
+  const { deleteParmanent, setTask, task, setDeletedTask, deletedTask, setFilteredList, filteredList } = useContext(TaskContext);
   // const { deleteTask, editTaskItem } = useContext(TaskContext);
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -33,6 +33,7 @@ export default function DeletedTaskItem({ deletedTaskItem }) {
   };
   const revertItem = () => {
     setTask([...task, deletedTaskItem]);
+    setFilteredList([...filteredList, deletedTaskItem]);
     const newItem = deletedTask.filter((el) => el.id !== deletedTaskItem.id);
     setDeletedTask(newItem);
     console.log("revert Item : ", newItem);

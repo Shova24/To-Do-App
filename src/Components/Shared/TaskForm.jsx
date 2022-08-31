@@ -13,8 +13,6 @@ export default function TaskForm({ formTitle, handleTask, visible }) {
   const navigate = useNavigate();
   const rating = [1, 2, 3, 4, 5];
 
-  const updateTask = () => {};
-
   const onFinish = (values) => {
     if (!visible) {
       const newTask = {

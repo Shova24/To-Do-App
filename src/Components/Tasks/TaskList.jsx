@@ -7,14 +7,13 @@ import TaskContext from "../Context/TaskContext";
 import { rating } from "../../utils/Context";
 
 export default function TaskList() {
-  const { task } = useContext(TaskContext);
-  const [filteredList, setFilteredList] = useState(task);
+  const { task, filteredList, setFilteredList } = useContext(TaskContext);
   const { Option } = Select;
 
   const handleChange = (value) => {
     if (value === "show") {
       setFilteredList(task);
-      console.log(filteredList);
+      // console.log(filteredList);
     } else {
       const filterItem = task.filter((item) => item.priority === +value);
       setFilteredList(filterItem);

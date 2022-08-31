@@ -9,6 +9,7 @@ export const TaskProvider = ({ children }) => {
   //Task Section States
   const [task, setTask] = useState(TaskData);
   const [deletedTask, setDeletedTask] = useState([]);
+  const [filteredList, setFilteredList] = useState(task);
 
   //Profile Section States
   const [title, setTitle] = useState("Default Title");
@@ -29,26 +30,22 @@ export const TaskProvider = ({ children }) => {
   //Task Functions
   const addTask = (newTask) => {
     setTask([...task, newTask]);
+    setFilteredList([...filteredList, newTask]);
     // console.log(newTask);
   };
 
   const updateTaskItem = (id, updatedItem) => {
     const up = task.filter((item) => item.id !== id);
     setTask([...up, updatedItem]);
-
-    // console.log("updated : ", updatedList);
+    setFilteredList([...up, updatedItem]);
   };
 
   const deleteTask = (id) => {
-    console.log(id);
-
     const sItem = task.find((el) => el.id === id);
     setDeletedTask([...deletedTask, sItem]);
-    console.log(sItem);
-    console.log(task);
     const balchal = task.filter((el) => el.id !== id);
-    console.log(balchal);
     setTask([...balchal]);
+    setFilteredList([...balchal]);
     Notification("Task Deleted");
   };
 
@@ -78,6 +75,7 @@ export const TaskProvider = ({ children }) => {
         imageProfile,
         visible,
         edit,
+        filteredList,
 
         setVisible,
         setEdit,
@@ -89,6 +87,7 @@ export const TaskProvider = ({ children }) => {
         updateTaskItem,
         setTask,
         setDeletedTask,
+        setFilteredList,
       }}>
       {children}
     </TaskContext.Provider>
